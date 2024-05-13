@@ -17,8 +17,6 @@ public class ControllerExceptionHandler {
         log.warn(e.getMessage());
 
         return new ResponseEntity<>(ResponseWrapper.<ExampleException>builder()
-                .code(400)
-                .success(false)
                 .error(e.getClass().getName())
                 .message(e.getMessage())
                 .build(), HttpStatus.BAD_REQUEST);
@@ -29,8 +27,6 @@ public class ControllerExceptionHandler {
         log.error(e.getMessage());
 
         return new ResponseEntity<>(ResponseWrapper.<RuntimeException>builder()
-                .code(500)
-                .success(false)
                 .error(e.getClass().getName())
                 .message(e.getMessage())
                 .build(), HttpStatus.INTERNAL_SERVER_ERROR);
